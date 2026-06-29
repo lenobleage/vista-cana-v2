@@ -1,8 +1,11 @@
 import { Component, signal } from '@angular/core';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [
+    TranslatePipe
+  ],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
