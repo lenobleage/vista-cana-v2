@@ -1,1 +1,46 @@
-<p>navbar works!</p>
+<nav class="sticky top-0 z-40 w-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-20 items-center">
+      <!-- Logo -->
+      <div class="shrink-0 flex items-center gap-2 cursor-pointer">
+        <div class="w-10 h-10 bg-teal-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-teal-500/30">H</div>
+        <span class="font-bold text-2xl tracking-tight text-slate-900 dark:text-white">HEAL <span class="text-teal-600 dark:text-teal-400">U</span></span>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a routerLink="/" class="text-slate-600 hover:text-teal-600 dark:text-slate-300 dark:hover:text-teal-400 font-medium transition-colors">{{ 'nav_home' | translate }}</a>
+        <a routerLink="/treatments" class="text-slate-600 hover:text-teal-600 dark:text-slate-300 dark:hover:text-teal-400 font-medium transition-colors">{{ 'nav_treatments' | translate }}</a>
+        <a routerLink="/contact" class="text-slate-600 hover:text-teal-600 dark:text-slate-300 dark:hover:text-teal-400 font-medium transition-colors">{{ 'nav_contact' | translate }}</a>
+        <a href="#" class="text-slate-600 hover:text-teal-600 dark:text-slate-300 dark:hover:text-teal-400 font-medium transition-colors">{{ 'nav_professional' | translate }}</a>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-4">
+        <!-- Lang Switcher -->
+        <button (click)="toggleLang()" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-semibold w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors uppercase">
+          {{ currentLang }}
+        </button>
+
+        <!-- Theme Toggle -->
+        <button (click)="toggleTheme()" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          @if (darkMode()) {
+            <!-- Sun Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+            </svg>
+          } @else {
+            <!-- Moon Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+            </svg>
+          }
+        </button>
+
+        <div class="hidden sm:block">
+          <app-ui-button variant="primary" (click)="onQuote.emit()">{{ 'btn_quote' | translate }}</app-ui-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

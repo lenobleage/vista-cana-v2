@@ -1,1 +1,11 @@
-<p>ui-card works!</p>
+<div class="group h-full bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700 flex flex-col items-start">
+  <div class="w-12 h-12 rounded-xl bg-teal-50 dark:bg-teal-900/30 flex items-center justify-center text-teal-600 dark:text-teal-400 mb-4 group-hover:scale-110 transition-transform">
+    <ng-content select="[icon]"></ng-content>
+  </div>
+  <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">
+    <ng-content select="[title]"></ng-content>
+  </h3>
+  <p class="text-slate-600 dark:text-slate-300 leading-relaxed flex-grow">
+    <ng-content></ng-content>
+  </p>
+</div>

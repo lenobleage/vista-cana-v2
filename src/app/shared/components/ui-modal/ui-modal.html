@@ -1,1 +1,42 @@
-<p>ui-modal works!</p>
+@if (open) {
+  <div class="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" (click)="close()"></div>
+
+    <!-- Modal Content -->
+    <div class="relative bg-white dark:bg-slate-800 rounded-3xl w-full max-w-lg shadow-2xl overflow-hidden animate-fade-in-up">
+      <div class="p-8">
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">{{ title }}</h2>
+        <p class="text-slate-500 dark:text-slate-400 mb-6">{{ description }}</p>
+
+        <form (ngSubmit)="submit()" class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Email</label>
+            <input type="email" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none transition-colors" placeholder="contact@email.com">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Spécialité</label>
+            <select class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none transition-colors">
+              <option>Médecine Esthétique</option>
+              <option>Neurologie</option>
+              <option>Gynécologie & PMA</option>
+            </select>
+          </div>
+          <div class="pt-4 flex justify-end gap-3">
+            <app-ui-button variant="outline" (click)="close()">{{ 'btn_close' | translate }}</app-ui-button>
+            <app-ui-button variant="primary" type="submit">{{ 'btn_send' | translate }}</app-ui-button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+}
+
+<!-- Animation CSS (à ajouter dans un style global ou dans le composant) -->
+<style>
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .animate-fade-in-up { animation: fadeInUp 0.3s ease-out forwards; }
+</style>
